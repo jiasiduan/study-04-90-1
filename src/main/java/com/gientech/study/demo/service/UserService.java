@@ -35,42 +35,12 @@ public class UserService {
      *
      * @param name
      * @param age
-     * @param pageId
      * @param pageSize
      * @param pageNo
      * @return
      */
-    public List<UserDto> getUsers(String name, Integer age, Integer pageId, Integer pageSize, Integer pageNo) {
-        return null;
+    public List<UserDto> getUsers(String name, Integer age, Integer pageSize, Integer pageNo) {
+        return UserStruct.INSTANCE.toDto(userMapper.getUsers(name, age, (pageNo - 1) * pageSize, pageSize));
     }
 
-    /**
-     * SaveUser
-     *
-     * @param userDto
-     * @return
-     */
-    public Integer saveUser(UserDto userDto) {
-        return 0;
-    }
-
-    /**
-     * UpdateUserById
-     *
-     * @param userDto
-     * @return
-     */
-    public Integer updateUserById(UserDto userDto) {
-        return 0;
-    }
-
-    /**
-     * DeleteUserById
-     *
-     * @param id
-     * @return
-     */
-    public Integer deleteUserById(Integer id) {
-        return 0;
-    }
 }

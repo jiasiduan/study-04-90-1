@@ -32,7 +32,6 @@ public class UserController {
      * GetUsers
      * @param name
      * @param age
-     * @param pageId
      * @param pageSize
      * @param pageNo
      * @return
@@ -41,10 +40,9 @@ public class UserController {
     public List<UserDto> getUsers(
             @RequestParam(value = "name", required = false) String name,
             @RequestParam(value = "age", required = false) Integer age,
-            @RequestParam("pageId") Integer pageId,
             @RequestParam("pageSize") Integer pageSize,
             @RequestParam("pageNo") Integer pageNo) {
-        return userService.getUsers(name, age, pageId, pageSize, pageNo);
+        return userService.getUsers(name, age, pageSize, pageNo);
     }
 
     /**
