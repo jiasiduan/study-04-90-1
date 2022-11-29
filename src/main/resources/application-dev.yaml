@@ -1,0 +1,49 @@
+server:
+  port: 8082
+  shutdown: graceful
+  servlet:
+    context-path: /demo
+spring:
+  lifecycle:
+    timeout-per-shutdown-phase: 10s
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.120.71:53307/demo01?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true&nullCatalogMeansCurrent=true
+    username: root
+    password: p-mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+      driver-class-name: ${spring.datasource.driver-class-name}
+      initial-size: 0
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: true
+        wall:
+          config:
+            multi-statement-allow: true
+  flyway:
+    enabled: false
+    baseline-on-migrate: false
+    locations: filesystem:src/main/resources/db/migration,classpath:/db/migration
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+    url: ${spring.datasource.url}
+    encoding: UTF-8
