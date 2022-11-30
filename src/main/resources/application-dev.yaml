@@ -8,7 +8,7 @@ spring:
     timeout-per-shutdown-phase: 10s
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.120.71:53307/demo01?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true&nullCatalogMeansCurrent=true
+    url: jdbc:mysql://127.0.0.1:53307/demo01?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true&nullCatalogMeansCurrent=true
     username: root
     password: p-mysql
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -41,7 +41,7 @@ spring:
             multi-statement-allow: true
   data:
     redis:
-      host: 192.168.120.71
+      host: 127.0.0.1
       password: redis123456
       port: 30339
 
