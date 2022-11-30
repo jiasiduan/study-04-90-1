@@ -39,11 +39,9 @@ spring:
         wall:
           config:
             multi-statement-allow: true
-  flyway:
-    enabled: false
-    baseline-on-migrate: false
-    locations: filesystem:src/main/resources/db/migration,classpath:/db/migration
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-    url: ${spring.datasource.url}
-    encoding: UTF-8
+  data:
+    redis:
+      host: 192.168.120.71
+      password: redis123456
+      port: 30339
+
